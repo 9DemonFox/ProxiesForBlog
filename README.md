@@ -27,6 +27,6 @@ def get_proxy():
             continue
 ```
 根据上述代码改写请求函数
-
-> Util/utilFunction.py 修改校验函数
-
+## 根据场景配置代理
+> Util/utilFunction.py 修改校验函数 2020年3月22日11:07:01  
+> Config/setting.py 中新增配置检测可用ip是否可用的间隔 2020年3月22日11:06:58

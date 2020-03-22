@@ -38,6 +38,8 @@ DB_HOST = getenv('db_host', '127.0.0.1')
 DB_PORT = getenv('db_port', 6379)
 DB_PASSWORD = getenv('db_password', '')
 
+""" 配置检测可用ip间隔 单位分钟"""
+CHECK_USEFUL_PORXIES_INTERVAL_MINITES = 90
 
 """ 数据库配置 """
 DATABASES = {

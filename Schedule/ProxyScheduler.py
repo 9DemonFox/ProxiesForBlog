@@ -14,6 +14,7 @@ __author__ = 'JHao'
 
 import sys
 from apscheduler.schedulers.blocking import BlockingScheduler
+from Config.ConfigGetter import config
 
 sys.path.append('../')
 
@@ -45,15 +46,18 @@ def usefulProxyScheduler():
 
 
 def runScheduler():
+    # print(config.check_interval_minute())
     rawProxyScheduler()
     usefulProxyScheduler()
 
     scheduler_log = LogHandler("scheduler_log")
     scheduler = BlockingScheduler(logger=scheduler_log)
 
-    scheduler.add_job(rawProxyScheduler, 'interval', minutes=5, id="raw_proxy_check", name="raw_proxy定时采集")
-    scheduler.add_job(usefulProxyScheduler, 'interval', minutes=1, id="useful_proxy_check", name="useful_proxy定时检查")
 
+
+    scheduler.add_job(rawProxyScheduler, 'interval', minutes=5, id="raw_proxy_check", name="raw_proxy定时采集")
+    scheduler.add_job(usefulProxyScheduler, 'interval', minutes=config.check_interval_minute(), id="useful_proxy_check",
+                      name="useful_proxy定时检查")
     scheduler.start()
 
 

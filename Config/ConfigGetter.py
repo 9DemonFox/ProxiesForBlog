@@ -12,7 +12,6 @@
 """
 __author__ = 'JHao'
 
-
 from Util.utilClass import LazyProperty
 from Config.setting import *
 
@@ -57,6 +56,13 @@ class ConfigGetter(object):
     def host_port(self):
         return SERVER_API.get("PORT", 5010)
 
+    def check_interval_minute(self):
+        """
+        检查代理ip的间隔
+        :return:
+        """
+        return CHECK_USEFUL_PORXIES_INTERVAL_MINITES
+
 
 config = ConfigGetter()
 
@@ -69,3 +75,4 @@ if __name__ == '__main__':
     print(config.host_ip)
     print(config.host_port)
     print(config.db_password)
+    print(config.check_interval_minute())
